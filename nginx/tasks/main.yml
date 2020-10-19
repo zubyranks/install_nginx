@@ -1,0 +1,21 @@
+# tasks file for nginx
+---
+- name: "debug statement" 
+  debug:
+    msg: "nginx version {{ version }}"
+  ignore_errors: true
+- name: Install Nginx Package
+  apt: 
+    name: "{{packagename}}"
+    state: latest
+
+- name: Copy index file from files folder
+  copy:
+    src: index.html
+    dest: /var/www/html  
+  notify: Restart the Nginx Service    
+
+- name: Start Nginx Service
+  service: 
+    name: "{{packagename}}"
+    state: started

@@ -1,0 +1,4 @@
+# defaults file for nginx
+---
+version: nginx/1.7.7
+port: 8090
